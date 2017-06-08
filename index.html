@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<!-- This is an HTML comment. Comments are not displayed in the brower. -->
+
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		
+		<title> izzy's webpage - home </title>
+
+<!-- Here is where the coding for my sparkly mouse trail begins. I sourced this from http://www.snazzyspace.com/tumblr/mouse-sparkles.php. I edited the colouring of the sparkles as they were originally black and I made them pink to match my blog. -->
+
+		<script type="text/javascript">
+	// <![CDATA[
+var colour="#E8D4EE";
+var sparkles=120;
+
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=new Array();
+var star=new Array();
+var starv=new Array();
+var starx=new Array();
+var stary=new Array();
+var tinyx=new Array();
+var tinyy=new Array();
+var tinyv=new Array();
+
+window.onload=function() { if (document.getElementById) {
+  var i, rats, rlef, rdow;
+  for (var i=0; i<sparkles; i++) {
+    var rats=createDiv(3, 3);
+    rats.style.visibility="hidden";
+    document.body.appendChild(tiny[i]=rats);
+    starv[i]=0;
+    tinyv[i]=0;
+    var rats=createDiv(5, 5);
+    rats.style.backgroundColor="transparent";
+    rats.style.visibility="hidden";
+    var rlef=createDiv(1, 5);
+    var rdow=createDiv(5, 1);
+    rats.appendChild(rlef);
+    rats.appendChild(rdow);
+    rlef.style.top="2px";
+    rlef.style.left="0px";
+    rdow.style.top="0px";
+    rdow.style.left="2px";
+    document.body.appendChild(star[i]=rats);
+  }
+  set_width();
+  sparkle();
+}}
+
+function sparkle() {
+  var c;
+  if (x!=ox || y!=oy) {
+    ox=x;
+    oy=y;
+    for (c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y)+"px";
+      star[c].style.clip="rect(0px, 5px, 5px, 0px)";
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout("sparkle()", 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px, 4px, 4px, 1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      starx[i]+=(i%5-2)/5;
+      star[i].style.left=starx[i]+"px";
+    }
+    else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  }
+  else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px";
+    tiny[i].style.height="2px";
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible"
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px";
+    tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tinyx[i]+=(i%5-2)/5;
+      tiny[i].style.left=tinyx[i]+"px";
+    }
+    else {
+      tiny[i].style.visibility="hidden";
+      tinyv[i]=0;
+      return;
+    }
+  }
+  else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=mouse;
+function mouse(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset;
+    sleft=self.pageXOffset;
+  }
+  else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop;
+    sleft=document.body.scrollLeft;
+  }
+  else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft;
+	sdown=document.documentElement.scrollTop;
+  }
+  else {
+    sdown=0;
+    sleft=0;
+  }
+}
+
+window.onresize=set_width;
+function set_width() {
+  if (typeof(self.innerWidth)=="number") {
+    swide=self.innerWidth;
+    shigh=self.innerHeight;
+  }
+  else if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth;
+    shigh=document.documentElement.clientHeight;
+  }
+  else if (document.body.clientWidth) {
+    swide=document.body.clientWidth;
+    shigh=document.body.clientHeight;
+  }
+}
+
+function createDiv(height, width) {
+  var div=document.createElement("div");
+  div.style.position="absolute";
+  div.style.height=height+"px";
+  div.style.width=width+"px";
+  div.style.overflow="hidden";
+  div.style.backgroundColor=colour;
+  return (div);
+}
+// ]]>
+</script>
+<!-- End of script for my sparkly mouse here -->
+</head>
+
+		<!-- Beginning of navigation bar and header -->
+	
+	<body>
+		<h2><i> kia ora and welcome to my webpage </i></h2>	
+			<br> 
+			<ul id="navigation">
+				<li><a href="index.html">home</a></li>
+				<li><a href="about.html">about me</a></li>
+				<li><a href="favourite videos.html">favourite videos</a></li>
+				<li><a href="reflection.html">reflection</a></li>
+				<li><a href="contact.html">contact</a></li>
+				<li><a href="music.html">music</a></li>
+				
+			</ul>	
+		
+			<br>
+			<br>
+			<br>
+			
+		<!-- This is where my main picture of Elton John is, sourced from http://imgur.com/3G7pznw -->
+		
+		<center> <img src="elton.jpg"> 
+		
+		<p id="example">
+			click here for a good laugh:
+			<button type="button" onclick="changehtml()">joke time</button>
+				<script>
+					function changehtml() {
+						document.getElementById("example").innerHTML = "did you hear about the goblin with no head? <br> he's ok now" ;
+					
+					}	
+				</script>
+				<br>
+			click here to read stuff BIG TIME:
+			<button type="button" onclick="changecss()">big text!</button>
+				<script>
+					function changecss() {
+						document.getElementById("example").style.fontSize = "80px";
+					}
+				</script>
+				<br>
+			click here to change some COLOURS:
+			<button type="button" onclick="changecss1()">colours!</button>
+				<script>
+					function changecss1() {
+						document.getElementById("example").style.color = "#FF6C2F";
+					}
+				</script>				
+				
+			<form name="confirm" onsubmit="return validateForm()" method="post">
+				<p>say hi in the box below! (literally type 'hi' please):</p> 	<input type="text" name="code">
+						<input type="submit" value="submit">
+			</form>	
+			
+			<!-- new set of buttons -->
+			
+			<script>
+				function validateForm() {
+				
+				var x = document.forms["confirm"]["code"].value; 
+				
+					if (x =="hi") {
+					alert("hello hello hellooooo");
+					}
+				
+					else if (x =="hey") {
+					alert("i need you to follow my instructions");
+					}
+					
+					else {
+					alert("you messed up! try again!");
+					}
+}			
+	
+			</script>
+			
+		</p>
+		<p> hello and welcome to izzy's info101 website. this is where i share things that are important to me. thank you for coming to visit. elton john says hello.</p>
+		<img src="alien.gif"> </center>
+	</body>
+	<!-- above is a gif of a dancing alien, which I sourced from http://k30.kn3.net/taringa/1/B/B/0/7/4/creazyfrog/D62.gif -->
+
+</html>
+

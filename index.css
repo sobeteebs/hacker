@@ -1,0 +1,79 @@
+body {
+	background-image: url("Home Background.png") ;
+	background-attachment:fixed;
+	background-size: cover;
+	
+}
+/* background image for all webpages sourced from https://archive-media-1.nyafuu.org/wg/image/1403/34/1403348885380.png */
+
+#navigation a { 
+display: block;
+width: 60px;
+background-color: #E0A2D4 ;
+}
+
+
+h2 {
+
+	text-align: center;
+	font-family: arial ;
+	color: #E8D4EE ;
+}
+	
+#navigation li { 
+	display: inline;
+	font-family: arial; 
+}
+
+#navigation {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px; 
+	text-align: center;
+}
+
+#navigation a { 
+	display: block;
+	width: 210px;
+	text-decoration: none;
+	padding: 5px 15 px;
+	
+}
+
+
+#navigation li {
+	float: left; 
+}
+
+a:link {
+color: #E8D4EE;	
+background-color: #E0A2D4;
+
+}
+
+a:visited {
+color: #F6DDEA ;
+
+}
+
+a:hover { 
+color: #E2E8F1;
+
+}
+
+a:active {
+color: #F3E0E3 ;
+
+}
+
+p {
+	font-family: arial;
+	font-size: 20;
+	font-style: italic;
+	color: #E8D4EE;
+	margin: 100px;
+}
+
+/* I use the same css file across all my webpages for consistency */
+	
+		
